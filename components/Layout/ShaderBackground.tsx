@@ -103,6 +103,7 @@ void main() {
 }`;
 
     function cs(type: number, src: string) {
+      if (!gl) return null;
       const s = gl.createShader(type);
       if (!s) return null;
       gl.shaderSource(s, src);
@@ -159,6 +160,7 @@ void main() {
     const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     function render(t: number) {
+      if (!gl) return;
       if (typeof ResizeObserver === 'undefined') syncSize();
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uTime) gl.uniform1f(uTime, t * 0.001);
@@ -176,6 +178,7 @@ void main() {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
       if (resizeObserver) resizeObserver.disconnect();
+      if (!gl) return;
       gl.deleteProgram(prog);
       gl.deleteShader(vShader);
       gl.deleteShader(fShader);
