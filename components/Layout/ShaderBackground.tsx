@@ -147,6 +147,7 @@ void main() {
     let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
     
     const handleMouseMove = (event: MouseEvent) => {
+      if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
       if (rect.width && rect.height) {
         const nx = (event.clientX - rect.left) / rect.width;
@@ -160,7 +161,7 @@ void main() {
     const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     function render(t: number) {
-      if (!gl) return;
+      if (!gl || !canvas) return;
       if (typeof ResizeObserver === 'undefined') syncSize();
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uTime) gl.uniform1f(uTime, t * 0.001);
