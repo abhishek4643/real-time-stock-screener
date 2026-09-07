@@ -1,12 +1,12 @@
 <div align="center">
 
-# 📈 Real-Time Stock Screener
+# Real-Time Stock Screener
 
 ### **Live Market Intelligence Dashboard with Real-Time Stock Analysis**
 
 _Track, filter, and analyze stocks in real-time with powerful screening tools_
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_App-0A66C2?style=for-the-badge)](https://real-time-stock-screener-xi.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_App-0A66C2?style=for-the-badge)](https://real-time-stock-screener-xi.vercel.app)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
@@ -15,7 +15,7 @@ _Track, filter, and analyze stocks in real-time with powerful screening tools_
 
 ---
 
-## 📌 About
+## About
 
 A high-performance **real-time stock screener** that allows users to filter and analyze stocks based on various technical and fundamental parameters. Built with TypeScript and Next.js, it delivers live market data with sub-second updates and an intuitive filtering interface.
 
@@ -23,22 +23,22 @@ A high-performance **real-time stock screener** that allows users to filter and 
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 | Feature | Description |
 |---------|-------------|
-| ⚡ **Real-Time Data** | Live price updates with WebSocket connections |
-| 🔍 **Advanced Screening** | Filter stocks by price, volume, market cap, P/E ratio, and more |
-| 📊 **Interactive Charts** | Candlestick, line, and area charts for price history |
-| 🏷️ **Watchlist** | Save and monitor your favorite stocks |
-| 📋 **Custom Filters** | Create and save custom screening criteria |
-| 🔔 **Price Alerts** | Set alerts for target prices and breakout signals |
-| 📱 **Responsive UI** | Full functionality on desktop and mobile |
-| 🌙 **Dark Mode** | Eye-friendly dark theme for extended sessions |
+| **Real-Time Data** | Live price updates with WebSocket connections |
+| **Advanced Screening** | Filter stocks by price, volume, market cap, P/E ratio, and more |
+| **Interactive Charts** | Candlestick, line, and area charts for price history |
+| **Watchlist** | Save and monitor your favorite stocks |
+| **Custom Filters** | Create and save custom screening criteria |
+| **Price Alerts** | Set alerts for target prices and breakout signals |
+| **Responsive UI** | Full functionality on desktop and mobile |
+| **Dark Mode** | Eye-friendly dark theme for extended sessions |
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ```
 Frontend:       TypeScript · React · Next.js
@@ -51,7 +51,7 @@ Deployment:     Vercel
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 # Clone the repository
@@ -73,7 +73,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📊 Screening Parameters
+## Screening Parameters
 
 | Category | Filters Available |
 |----------|-------------------|
@@ -85,7 +85,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 real-time-stock-screener/
@@ -104,6 +104,6 @@ real-time-stock-screener/
 
 <div align="center">
 
-_Your real-time window into the stock market_ 📈
+_Your real-time window into the stock market_
 
 </div>
