@@ -17,6 +17,11 @@ EquityPulse follows an event-driven, decoupled frontend architecture connecting 
   <img src="./architecture.svg" alt="EquityPulse Architecture Flow" width="100%" />
 </p>
 
+* **Market Feed (WebSockets / Ticks)**: Low-latency binary/JSON streaming ticks with sub-16ms jitter buffer and auto-reconnect.
+* **Next.js 14 Engine (App Router + Zustand)**: Reactive state core with atomic Zustand store, Immer mutators, and TanStack React Query v5.
+* **Virtual Grid (TanStack Table v8)**: High-density screener with TanStack Virtual windowing rendering 10,000+ rows at 60 FPS.
+* **Lightweight Charts (TradingView Canvas)**: Hardware-accelerated Canvas 2D candlestick graphs, volume metrics, and interactive crosshair telemetry.
+
 ---
 
 ### 2. Technology Stack

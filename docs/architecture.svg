@@ -39,7 +39,7 @@
   <g transform="translate(24, 12)">
     <rect width="300" height="20" rx="10" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
     <circle cx="10" cy="10" r="3.5" fill="#10B981"/>
-    <text x="20" y="14" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" letter-spacing="0.05em">EQUITYPULSE &bull; REAL-TIME STREAMING TOPOLOGY</text>
+    <text x="20" y="14" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" letter-spacing="0.05em">EQUITYPULSE &#8226; REAL-TIME STREAMING TOPOLOGY</text>
   </g>
 
   <!-- ==================== CARD 1: MARKET DATA GATEWAY ==================== -->
@@ -74,7 +74,7 @@
     </g>
     <!-- Footer Badge -->
     <rect x="14" y="198" width="167" height="18" rx="4" fill="#DBEAFE"/>
-    <text x="97.5" y="210" text-anchor="middle" fill="#1E40AF" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">WSS Protocol &bull; Binary / JSON</text>
+    <text x="97.5" y="210" text-anchor="middle" fill="#1E40AF" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">WSS Protocol &#8226; Binary / JSON</text>
   </g>
 
   <!-- Connector 1 -->
@@ -116,7 +116,7 @@
     </g>
     <!-- Footer Badge -->
     <rect x="14" y="198" width="167" height="18" rx="4" fill="#D1FAE5"/>
-    <text x="97.5" y="210" text-anchor="middle" fill="#047857" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">React 18 &bull; App Router v14.2</text>
+    <text x="97.5" y="210" text-anchor="middle" fill="#047857" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">React 18 &#8226; App Router v14.2</text>
   </g>
 
   <!-- Connector 2 -->
@@ -158,7 +158,7 @@
     </g>
     <!-- Footer Badge -->
     <rect x="14" y="198" width="167" height="18" rx="4" fill="#FEF3C7"/>
-    <text x="97.5" y="210" text-anchor="middle" fill="#B45309" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">Zero DOM Thrashing &bull; 60fps</text>
+    <text x="97.5" y="210" text-anchor="middle" fill="#B45309" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">Zero DOM Thrashing &#8226; 60fps</text>
   </g>
 
   <!-- Connector 3 -->
@@ -205,7 +205,7 @@
     </g>
     <!-- Footer Badge -->
     <rect x="14" y="198" width="167" height="18" rx="4" fill="#EDE9FE"/>
-    <text x="97.5" y="210" text-anchor="middle" fill="#6D28D9" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">Canvas 2D Engine &bull; Zero Re-renders</text>
+    <text x="97.5" y="210" text-anchor="middle" fill="#6D28D9" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">Canvas 2D Engine &#8226; Zero Re-renders</text>
   </g>
 
   <!-- Bottom Legend Bar -->
