@@ -57,3 +57,4 @@ This document maintains operational context, key architectural decisions, and ru
 - **Canvas Cleanup**: Never unmount a chart container without invoking `chart.remove()`. Failure to do so leaks canvas contexts.
 - **Store Selector Granularity**: Always extract state using `useMarketStore(s => s.tickers[sym])`. Never destructure the entire store into component root scopes.
 - **Floating Point Math**: Always route display values through `lib/formatters.ts` to prevent IEEE 754 precision artifacts.
+

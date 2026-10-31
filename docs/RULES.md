@@ -81,3 +81,4 @@ This document specifies the non-negotiable coding conventions, TypeScript standa
   - **Downtick / Bearish**: `text-rose-500` / `bg-rose-500/10` (`#EF4444`)
   - **Neutral / Flat**: `text-slate-400` / `bg-slate-800`
 - Always accompany color-coded percentages with directional icon glyphs (`▲`, `▼`) for accessibility compliance.
+

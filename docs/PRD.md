@@ -74,3 +74,4 @@ Active day traders, momentum investors, and financial analysts require sub-secon
 - **Out of Scope (Deferred to v2.0)**:
   - Live order placement and brokerage API broker bridges (Alpaca / Interactive Brokers).
   - Multi-monitor detached canvas popup windows.
+

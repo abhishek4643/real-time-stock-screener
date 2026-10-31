@@ -38,40 +38,42 @@ Technologies used across EquityPulse and their architectural purpose:
 
 ---
 
-### 3. Directory Structure
+### 3. Folder Structure
+
+The project follows a clean, modular structure separating Next.js App Router pages, state stores, charts, and virtualized components:
 
 ```text
 Front1/
-├── app/                            # Next.js 14 App Router
-│   ├── layout.tsx                  # Root HTML & Theme Provider Wrappers
-│   ├── page.tsx                    # Main Financial Screener Application Page
-│   └── globals.css                 # Base Tailwind Directives & Custom Animations
-├── components/                     # Modular React Components
-│   ├── Chart/                      # TradingView Lightweight Charts Candlestick Component
-│   ├── Screener/                   # Virtualized Screener Table & Header Filters
-│   ├── Watchlist/                  # Pinned Favorites Management Panel
-│   └── UI/                         # Badges, Tooltips, Buttons, and Stat Cards
-├── constants/                      # Market Symbols, Sector Enums & Mock Tickers
-├── hooks/                          # Custom Hooks (`useWebSocket`, `useDebounce`)
-├── lib/                            # Financial Formatting Utilities & Math Routines
-├── stores/                         # Zustand Global Stores (`useMarketStore`, `useFilterStore`)
-├── types/                          # TypeScript Interfaces (`Ticker`, `Candle`, `FilterState`)
-├── __tests__/                      # Vitest Unit and Integration Tests
-├── docs/                           # Complete Architecture & Engineering Docs
-│   ├── ARCHITECTURE.md             # System Topology & Algorithm Specifications
-│   ├── DESIGN.md                   # Design System & UI Specifications
-│   ├── MEMORY.md                   # Operational State & Milestone Log
-│   ├── PRD.md                      # Product Requirements & User Scenarios
-│   ├── RULES.md                    # Engineering Conventions & Coding Rules
-│   ├── TASKS.md                    # Phased Roadmap with 24 Deliverables
-│   ├── architecture.svg            # Custom 4-Card Vector Topology
-│   ├── palette.svg                 # 8-Swatch Design System Vector Palette
-│   └── principles.svg              # 4-Card Design Principles Vector
-├── package.json                    # Scripts & Dependencies
-├── tailwind.config.ts              # Tailwind Color Tokens & Keyframes
-├── tsconfig.json                   # TypeScript Strict Configuration
-├── vitest.config.ts                # Vitest Test Harness Configuration
-└── README.md                       # Repository Entry & Developer Guide
+|-- app/                                # Next.js 14 App Router
+|   |-- layout.tsx                      # Root HTML & Theme Provider Wrappers
+|   |-- page.tsx                        # Main Financial Screener Application Page
+|   `-- globals.css                     # Base Tailwind Directives & Custom Animations
+|-- components/                         # Modular React Components
+|   |-- Chart/                          # TradingView Lightweight Charts Candlestick Component
+|   |-- Screener/                       # Virtualized Screener Table & Header Filters
+|   |-- Watchlist/                      # Pinned Favorites Management Panel
+|   `-- UI/                             # Badges, Tooltips, Buttons, and Stat Cards
+|-- constants/                          # Market Symbols, Sector Enums & Mock Tickers
+|-- hooks/                              # Custom Hooks (useWebSocket, useDebounce)
+|-- lib/                                # Financial Formatting Utilities & Math Routines
+|-- stores/                             # Zustand Global Stores (useMarketStore, useFilterStore)
+|-- types/                              # TypeScript Interfaces (Ticker, Candle, FilterState)
+|-- __tests__/                          # Vitest Unit and Integration Tests
+|-- docs/                               # Complete Architecture & Engineering Docs
+|   |-- ARCHITECTURE.md                 # System Topology & Algorithm Specifications
+|   |-- DESIGN.md                       # Design System & UI Specifications
+|   |-- MEMORY.md                       # Operational State & Milestone Log
+|   |-- PRD.md                          # Product Requirements & User Scenarios
+|   |-- RULES.md                        # Engineering Conventions & Coding Rules
+|   |-- TASKS.md                        # Phased Roadmap with 24 Deliverables
+|   |-- architecture.svg                # Custom 4-Card Vector Topology
+|   |-- palette.svg                     # 8-Swatch Design System Vector Palette
+|   `-- principles.svg                  # 4-Card Design Principles Vector
+|-- package.json                        # Scripts & Dependencies
+|-- tailwind.config.ts                  # Tailwind Color Tokens & Keyframes
+|-- tsconfig.json                       # TypeScript Strict Configuration
+|-- vitest.config.ts                    # Vitest Test Harness Configuration
+`-- README.md                           # Repository Entry & Developer Guide
 ```
 
 ---
@@ -79,39 +81,35 @@ Front1/
 ### 4. Real-Time Streaming Data Pipeline
 
 ```text
-Market WebSocket Stream (60 Ticks / Second)
-       │
-       ▼
-[ useWebSocket Hook ] ────────► Heartbeat check & exponential reconnect
-       │
-       ▼
-[ Tick Normalizer ] ──────────► Parses binary/JSON payload into normalized Ticker type
-       │
-       ▼
-[ Zustand Buffer Store ] ─────► Batches updates into a 16ms animation frame throttle
-       │
-       ├────────────────────────┬────────────────────────┐
-       ▼                        ▼                        ▼
-[ TanStack Virtual Grid ] [ Active Chart Sync ] [ Watchlist Stats ]
-  Only visible rows         Canvas 2D candlestick   Aggregates net
-  update; flash green/red   draws new candle point  portfolio PnL
+[ Market WebSocket Stream (60 Ticks / Second) ]
+                         |
+                         v
+[ useWebSocket Hook: Heartbeat & Exponential Reconnect ]
+                         |
+                         v
+[ Tick Normalizer: Parses Binary/JSON to Normalized Ticker ]
+                         |
+                         v
+[ Zustand Buffer Store: Batches Updates into 16ms rAF Throttle ]
+                         |
+        +----------------+----------------+
+        |                                 |
+        v                                 v
+[ TanStack Virtual Grid ]        [ TradingView Canvas 2D ]
+(Windowed 25 Visible Rows)       (Sub-1ms Candlestick Render)
+        |                                 |
+        v                                 v
+[ Real-Time Flash Indicator ]    [ Synchronized Crosshair Telemetry ]
+(Green Surge / Red Dump)         (Price & Volume Multi-Overlay)
 ```
 
 ---
 
-### 5. Architectural Decision Records (ADRs)
+### 5. Key Architectural Decisions (ADRs)
 
-#### ADR-001: TanStack Table v8 with React Virtual Windowing
-- **Context**: Ingesting real-time updates for thousands of instruments causes heavy DOM node churn if all rows remain rendered, dropping frame rates to $< 15\text{ FPS}$.
-- **Decision**: Adopt `@tanstack/react-virtual` to window the table DOM. Only the ~25 rows currently visible in the user's viewport exist in the DOM.
-- **Consequence**: Keeps memory usage low, eliminates DOM thrashing, and guarantees a solid 60 FPS scrolling experience.
-
-#### ADR-002: TradingView Canvas Charts over SVG-based Visualizers
-- **Context**: SVG charting libraries (e.g., standard Recharts) create dozens of DOM elements per candle. Re-rendering SVG paths at 60 FPS under market volatility causes severe frame drops.
-- **Decision**: Integrate TradingView's `lightweight-charts`, which uses an HTML5 Canvas 2D hardware-accelerated pipeline.
-- **Consequence**: Candlestick updates render in $< 1\text{ ms}$ without generating any virtual DOM overhead.
-
-#### ADR-003: Zustand with Immer for Decoupled High-Frequency State
-- **Context**: React Context triggers re-renders across all child components consuming the context whenever any ticker updates.
-- **Decision**: Use Zustand with selector subscriptions (`useMarketStore(state => state.tickers[symbol])`).
-- **Consequence**: Only the specific cell consuming that symbol re-renders, isolating updates and preventing application-wide re-render cascades.
+* **ADR-001: TanStack Table v8 with React Virtual Windowing**  
+  *Rationale*: Ingesting real-time updates for thousands of instruments causes heavy DOM node churn if all rows remain rendered, dropping frame rates to $< 15\text{ FPS}$. Windowing keeps memory usage low, eliminates DOM thrashing, and guarantees a solid 60 FPS scrolling experience.
+* **ADR-002: TradingView Canvas Charts over SVG-based Visualizers**  
+  *Rationale*: SVG charting libraries (e.g., standard Recharts) create dozens of DOM elements per candle. Re-rendering SVG paths at 60 FPS under market volatility causes severe frame drops. TradingView's `lightweight-charts` uses an HTML5 Canvas 2D hardware-accelerated pipeline where candlestick updates render in $< 1\text{ ms}$.
+* **ADR-003: Zustand with Immer for Decoupled High-Frequency State**  
+  *Rationale*: React Context triggers re-renders across all child components consuming the context whenever any ticker updates. Using Zustand with selector subscriptions ensures only the specific cell consuming that symbol re-renders, preventing application-wide re-render cascades.
