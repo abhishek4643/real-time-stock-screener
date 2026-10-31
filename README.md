@@ -1,160 +1,108 @@
-# EquityPulse — Real-Time Stock Screener
+<div align="center">
 
-A production-grade, high-frequency financial market screener and technical analysis dashboard delivering real-time streaming market data, interactive candlestick charting, and zero-latency multi-factor filtering.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,26&height=220&section=header&text=EquityPulse%20Platform&fontSize=52&fontColor=FFFFFF&fontAlignY=36&desc=Production-Grade%20Real-Time%20Financial%20Market%20Screener&descSize=16&descColor=A5B4FC&descAlignY=58&animation=fadeIn" width="100%" />
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live_Screener-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://real-time-stock-screener.vercel.app)
-[![Next.js](https://img.shields.io/badge/Next.js-14.2-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![TradingView](https://img.shields.io/badge/Charts-Lightweight_Charts-2962FF?style=for-the-badge)](https://www.tradingview.com/lightweight-charts/)
-[![TanStack](https://img.shields.io/badge/Tables-TanStack_Table_v8-FF4154?style=for-the-badge)](https://tanstack.com/)
-[![Zustand](https://img.shields.io/badge/State-Zustand-443E38?style=for-the-badge)](https://github.com/pmndrs/zustand)
-[![Tests](https://img.shields.io/badge/Tests-Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+<br/>
 
----
+<a href="#system-architecture">
+  <img src="https://img.shields.io/badge/Framework-Next.js%2014-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 14" />
+</a>
+&nbsp;
+<a href="#system-architecture">
+  <img src="https://img.shields.io/badge/Library-React%2018-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" />
+</a>
+&nbsp;
+<a href="#system-architecture">
+  <img src="https://img.shields.io/badge/State-Zustand%20%2B%20Immer-8B5CF6?style=for-the-badge&labelColor=1e1b4b" alt="Zustand" />
+</a>
+&nbsp;
+<a href="#system-architecture">
+  <img src="https://img.shields.io/badge/Grid-TanStack%20Table%20v8-FF4154?style=for-the-badge&labelColor=1e1b4b" alt="TanStack Table" />
+</a>
+&nbsp;
+<a href="#system-architecture">
+  <img src="https://img.shields.io/badge/Charts-TradingView%20Canvas-2962FF?style=for-the-badge&logo=tradingview&logoColor=white" alt="TradingView" />
+</a>
 
-## Project Overview
+</div>
 
-In volatile capital markets, milliseconds matter. Traditional financial portals suffer from bloated DOM structures and excessive re-renders during high-frequency price updates. EquityPulse delivers an institutional-grade screener engineered for performance. Utilizing WebSockets, TanStack Virtual table virtualization, and Zustand state slices, it processes 100+ price ticks per second with zero UI stutter.
+<br/>
 
-**Vision:** Bring high-speed institutional screening tools and interactive technical analysis into an accessible, open-source web application.
+# EquityPulse — Production-Grade Real-Time Stock Screener
 
----
+A low-latency, high-density financial market screener and technical charting engine built with Next.js 14, React 18, Zustand, and TanStack Table v8.
 
-## Live Application
-
-Access the production screener:
-- **Live URL:** [https://real-time-stock-screener.vercel.app](https://real-time-stock-screener.vercel.app)
-- **Deployment Status:** Active and Continuously Deployed via Vercel
-- **Coverage:** US Equities, Real-Time Tickers, Technical Indicators
-
----
-
-## Key Features
-
-- **High-Frequency WebSocket Engine:** Real-time bi-directional streaming of quotes, bid/ask spreads, and daily percentage shifts.
-- **Virtualized High-Performance Grid:** Powered by TanStack Virtual and TanStack Table v8 to render thousands of tickers at a locked 60fps.
-- **Interactive Technical Canvas:** TradingView Lightweight Charts integration for responsive candlestick, volume, and line series visual analysis.
-- **Multi-Factor Screener Filters:** Instant client-side filtering across market cap, volume spikes, RSI (14), price ranges, and sector classifications.
-- **Atomic State Architecture:** Zustand store with Immer middleware preventing unnecessary component re-renders during tick updates.
-- **Comprehensive Test Suite:** Vitest and React Testing Library coverage testing indicator algorithms, store actions, and UI boundaries.
-
----
-
-## Use Cases
-
-### For Day Traders & Active Investors
-- Screen for breakout stocks, gap-ups, and sudden volume anomalies in real time.
-- Switch between multi-timeframe candlestick charts without losing screener filter context.
-
-### For Financial Engineers & Quantitative Developers
-- Test and visualize technical indicator calculations against streaming historical data.
-- Benchmark frontend rendering efficiency under simulated market volatility conditions.
+EquityPulse is designed for active traders who need **60 FPS real-time price updates** across thousands of instruments without DOM thrashing, browser lag, or memory leaks.
 
 ---
 
 ## System Architecture
 
-```
-+-----------------------+              +-----------------------+
-| Real-Time Market Feed |              | Financial REST APIs   |
-+-----------------------+              +-----------------------+
-            | (WebSocket stream)                   | (TanStack Query)
-            v                                      v
-+--------------------------------------------------------------+
-|                Zustand State Store (Atomic Slices)           |
-|  - Live Ticker Registry        - Technical Indicator State   |
-|  - Screener Filter Parameters  - Chart History Buffer        |
-+--------------------------------------------------------------+
-                               |
-                               v
-+--------------------------------------------------------------+
-|               UI Layer (TanStack Virtual & Table)            |
-|  - 60fps Virtualized Grid      - Interactive Candlestick Canvas|
-|  - Real-Time Price Highlight   - Instant Filter & Sort Engine |
-+--------------------------------------------------------------+
-```
+<p align="center" style="margin: 20px 0;">
+  <img src="./docs/architecture.svg" alt="EquityPulse Architecture Flow" width="100%" />
+</p>
 
 ---
 
-## Technology Stack
+## Key Performance Highlights
 
-| Layer | Technologies |
-|---|---|
-| Framework | Next.js 14.2 (App Router), React 18.3 |
-| State Management | Zustand 4.5, Immer 10.1 |
-| Data Tables & Virtualization | TanStack Table 8.20, TanStack Virtual 3.13 |
-| Data Fetching | TanStack Query 5.62, WebSocket (ws 8.18) |
-| Charting Engine | TradingView Lightweight Charts 4.2 |
-| Styling & Theme | Tailwind CSS 3.4, Lucide React, Framer Motion, next-themes |
-| Test Runner | Vitest 2.1, @testing-library/react 16.1, JSDOM |
+- **60 FPS Virtualized Grid**: Handles 10,000+ financial instruments using `@tanstack/react-virtual`, rendering only active viewport rows.
+- **Hardware-Accelerated Charts**: Built on TradingView's `lightweight-charts` Canvas 2D engine for sub-millisecond candlestick re-paints.
+- **Microsecond Tick Flashes**: 600ms decaying green/red price flash animations that inform traders of tick direction at a glance.
+- **Decoupled Zustand State**: Atomic selector subscriptions prevent application-wide re-render cascades during market volatility.
+- **Custom Watchlists**: Persistent, drag-and-drop favorited symbols stored with instant local synchronization.
 
 ---
 
-## Project Structure
+## Engineering Documentation
 
-```
-EquityPulse/
-├── app/                  # Next.js App Router views and layout
-├── components/           # UI components
-│   ├── ChartModal.tsx    # TradingView Lightweight Charts candlestick canvas
-│   ├── FilterBar.tsx     # Range sliders, sector toggles, and search inputs
-│   ├── Header.tsx        # Market status, theme switcher, and connection state
-│   └── ScreenerTable.tsx # Virtualized ticker grid with sorting
-├── constants/            # Default ticker universe and indicator configurations
-├── hooks/                # Custom hooks (useWebSocket, useDebounce, useIndicators)
-├── stores/               # Zustand state stores and selectors
-├── types/                # Financial data contracts and screener types
-├── __tests__/            # Unit and component tests (Vitest)
-├── next.config.mjs
-└── package.json
-```
+The project includes a complete production-grade architecture and development documentation suite:
+
+| Document | Purpose |
+| :-- | :-- |
+| [**`docs/PRD.md`**](./docs/PRD.md) | Product Requirements Document: MVP specifications, target personas & success metrics |
+| [**`docs/ARCHITECTURE.md`**](./docs/ARCHITECTURE.md) | System topology, streaming tick pipeline, directory tree & ADRs |
+| [**`docs/RULES.md`**](./docs/RULES.md) | Engineering standards, TypeScript conventions, and high-frequency guardrails |
+| [**`docs/DESIGN.md`**](./docs/DESIGN.md) | Design system, UI tokens, Inter & JetBrains Mono typography, and telemetry cards |
+| [**`docs/TASKS.md`**](./docs/TASKS.md) | Phased roadmap tracking 24 engineering deliverables with priority & status badges |
+| [**`docs/MEMORY.md`**](./docs/MEMORY.md) | Active session memory, completed milestone log, and operational boundaries |
 
 ---
 
-## Getting Started
+## Setup Instructions
 
 ### Prerequisites
-- Node.js >= 18.0.0
-- npm or yarn
+- Node.js (`v18.17+` or `v20+`)
+- npm / pnpm / yarn
 
-### Installation
+### 1. Clone the repository
+```bash
+git clone https://github.com/abhishek4643/real-time-stock-screener.git
+cd real-time-stock-screener
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/abhishek4643/real-time-stock-screener.git
-   cd real-time-stock-screener
-   ```
+### 2. Install dependencies
+```bash
+npm install
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 3. Launch Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to explore the screener.
 
-3. Launch development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Running Automated Tests
-
-Execute the comprehensive test suite with Vitest:
+### 4. Run Test Suite
 ```bash
 npm run test
+```
+To run tests with coverage:
+```bash
 npm run test:coverage
 ```
 
 ---
 
-## Future Roadmap
-
-- Options chain visualization with real-time Greeks calculation (Delta, Gamma, Theta).
-- Browser audio and desktop push alerts for user-defined price breakout triggers.
-- Multi-chart grid view allowing simultaneous observation of up to 6 symbols.
-- Export screener results to CSV and JSON formats.
-
----
-
 ## License
 
-This project is private and maintained for showcase and research purposes.
+This project is open-source and available under the MIT License.
